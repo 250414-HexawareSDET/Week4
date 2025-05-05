@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PersonTests {
 
@@ -44,6 +44,28 @@ public class PersonTests {
 
     }
 
+    //Positive test - test that the method works as expected when given valid input
+    @Test
+    public void testEatValidFood(){
 
+        String result = person.eat("pizza");
+
+        //assert that the value is what's expected
+        assertEquals("Person is eating: pizza", result);
+
+    }
+
+    //Negative test - test that the method works as expected when given INvalid input
+    @Test
+    public void testEatInvalidFood(){
+
+        //assert that the value is what's expected, AND that the right Exception was thrown
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            String result = person.eat("peanut butter");
+            assertNull(result);
+        });
+
+    }
 
 }
